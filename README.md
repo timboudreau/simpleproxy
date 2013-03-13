@@ -34,7 +34,7 @@ By default it adds/replaces the following:
 	Cache-Control: no-cache, no-store
 	Expires: Tue, 2 Jan 1990, 00:00:00 GMT
 
-It is not meant to be fast (its buffer is small, and it's defeating caching, after all!).
+It is not meant to be fast (it's defeating caching, after all!).
 
 
 Modifying It
@@ -43,6 +43,9 @@ Modifying It
 To modify header behavior, simply pass a different function for the ``headerConverter`` parameter to the ``ProxyServer`` constructor.  Or edit the function ``handleHeaders`` in
 ``proxy-server.js``.
 
+To introduce other behavior (for example, in-memory caching), do that in front of the call to proxy.dispatch.
+The syntax using ``proxy.dispatch.apply({req : req, res : res}, req, res)`` is for compatibility with a 
+number of routers.
 
 License
 -------

@@ -121,9 +121,7 @@ exports.ProxyServer = function ( proxyConfig, convertLocation, headerConverter )
                     self.req.method + " " + self.req.url );
 
             self.res.writeHead ( res.statusCode, hdrs );
-            res.on ( 'data', function ( data ) {
-                self.res.write ( data );
-            } )
+            res.pipe(self.res);
             res.on ( 'end', function () {
                 if (res.trailers) {
                     self.res.addTrailers ( res.trailers );
