@@ -26,7 +26,9 @@ Default Behavior
 
 By default it proxies localhost port 8888.  You can pass a URL to it on the command-line to have it proxy something else.
 
-By default it simply proxies another host, and munges the HTTP headers to ensure the browser does not use cached copies of anything.  It adds/replaces the following:
+By default it simply proxies another host, and munges the HTTP headers to ensure the browser does not use cached copies of anything.  Of course, you can change that to do whatever you want.
+
+By default it adds/replaces the following:
 
 	Pragma: no-cache
 	Cache-Control: no-cache, no-store
