@@ -1,0 +1,24 @@
+{
+  "name" : "simpleproxy",
+  "description" : "A very, very simple node.js-based proxy.",
+  "version" : "0.1",
+  "main" : "simpleproxy.js",
+  "author" : {
+    "name" : "Tim Boudreau",
+    "email" : "niftiness@gmail.com"
+  },
+  "keywords" : [ "node", "nodejs", "proxy", "http" ],
+  "licenses" : {
+    "type" : "MIT"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "git://github.com/timboudreau/simpleproxy.git"
+  },
+  "bugs" : {
+    "web" : "http://github.com/timboudreau/simpleproxy/issues"
+  },
+  "license" : {
+    "type" : "mit"
+  }
+}
