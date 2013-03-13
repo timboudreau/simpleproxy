@@ -1,7 +1,7 @@
 {
   "name" : "simpleproxy",
   "description" : "A very, very simple node.js-based proxy.",
-  "version" : "0.1",
+  "version" : "1.0",
   "main" : "simpleproxy.js",
   "author" : {
     "name" : "Tim Boudreau",
