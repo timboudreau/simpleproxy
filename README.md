@@ -43,6 +43,21 @@ Modifying It
 To modify header behavior, simply pass a different function for the ``headerConverter`` parameter to the ``ProxyServer`` constructor.  Or edit the function ``handleHeaders`` in
 ``proxy-server.js``.
 
+For example, say we want to add a header ``X-My-Header: Foo`` to every request.
+Find the line
+
+    var proxy = new proxyModule.ProxyServer ( config );
+
+and replace it like this:
+
+    function addAHeader ( httpResponse, responseHeaders, requestToProxy ) {
+        proxyModule.handleHeaders.apply ( this, arguments );
+        responseHeaders['X-My-Header'] = 'Foo';
+    }
+
+    var proxy = new proxyModule.ProxyServer ( config, null, addAHeader );
+
+
 To introduce other behavior (for example, in-memory caching), do that in front of the call to proxy.dispatch.
 The syntax using ``proxy.dispatch.apply({req : req, res : res}, req, res)`` is for compatibility with a 
 number of routers.

@@ -11,13 +11,21 @@ function error ( res, err ) {
     res.end ( err ? err.stack || "" + err : "Error" );
 }
 
-function handleHeaders ( httpResponse, responseHeaders ) {
+function handleHeaders ( httpResponse, responseHeaders, requestToProxy ) {
     responseHeaders['Pragma'] = 'no-cache';
     responseHeaders['Cache-Control'] = 'no-cache, no-store';
     responseHeaders['Server'] = 'Proxy for ' + httpResponse.headers['server'];
     responseHeaders['Expires'] = 'Tue, 2 Jan 1990, 00:00:00 GMT';
 }
+exports.handleHeaders = handleHeaders;
 
+// ProxyServer (class)
+// ===========
+// Creates a new proxy server.  Pass it
+//
+//  * A configuration, which might be a parsed URL (host, port properties)
+//  * A location converter, which takes ``Location:`` headers and transforms them (may be null)
+//  * A header converter which builds the headers for the response
 exports.ProxyServer = function ( proxyConfig, convertLocation, headerConverter ) {
     var requestNumber = 0;
     if (!proxyConfig.protocol) {
@@ -99,7 +107,7 @@ exports.ProxyServer = function ( proxyConfig, convertLocation, headerConverter )
 
         var proxyRequest = protocol.request ( u, function ( res ) {
             var hdrs = {}
-            headerConverter ( res, hdrs );
+            headerConverter ( res, hdrs, self.req );
             for (var key in res.headers) {
                 if (key.toLowerCase () === 'location') {
                     var val = res.headers[key];
@@ -121,7 +129,7 @@ exports.ProxyServer = function ( proxyConfig, convertLocation, headerConverter )
                     self.req.method + " " + self.req.url );
 
             self.res.writeHead ( res.statusCode, hdrs );
-            res.pipe(self.res);
+            res.pipe ( self.res );
             res.on ( 'end', function () {
                 if (res.trailers) {
                     self.res.addTrailers ( res.trailers );
