@@ -4,7 +4,7 @@ Simple Proxy
 A really, really simple HTTP proxy for debugging things.  Like, two-source-files simple.
 
 Its default behavior is to modify cache headers, but it can be tweaked to do whatever you want
-to incoming requests.  Mostly it's useful for
+to proxied responses.  Mostly it's useful for
 
   * Coding against a development server that is giving inappropriate caching instructions to the browser, where you want to be sure that what you're seeing is fresh bits
   * Caching content, to, say, remove back-end performance issues from testing the effect of cache headers or compression
