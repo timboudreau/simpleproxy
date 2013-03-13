@@ -32,7 +32,7 @@ By default it simply proxies another host, and munges the HTTP headers to ensure
 	Cache-Control: no-cache, no-store
 	Expires: Tue, 2 Jan 1990, 00:00:00 GMT
 
-It is not meant to be fast (its buffer is small, it's defeating caching, after all!).
+It is not meant to be fast (its buffer is small, and it's defeating caching, after all!).
 
 
 Modifying It
