@@ -24,5 +24,5 @@ http.createServer ( function ( req, res ) {
     };
     proxy.dispatch.apply ( fake, [req, res] );
 } ).listen ( 9339, "", function () {
-    console.log ( "Proxy server started on port 9993 proxying " + ( arg ? arg : 'localhost:' + config.port ) );
+    console.log ( "Proxy server started on port 9339 proxying " + ( arg ? arg : 'localhost:' + config.port ) );
 } );
